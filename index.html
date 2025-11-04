@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thien Tran · IT / Networking / Cybersecurity</title>
+    <meta
+      name="description"
+      content="Computer Science graduate and CompTIA A+ certified IT professional. Skilled in troubleshooting, systems administration, and cloud technologies with hands-on experience in networking, cybersecurity, and self-hosted server projects."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="stylesheet" href="style4.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script
+      async
+      src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- decorative floating orbs -->
+    <div class="float-bg" aria-hidden="true"></div>
+    <div class="stage">
+      <div class="wrap">
+        <header>
+          <!-- toolbar removed -->
+        </header>
+        <main id="main" class="grid" role="main" aria-label="Dashboard">
+          <!-- LEFT COLUMN -->
+          <div class="card" aria-label="Profile & Services">
+            <div class="row">
+            
+              <!-- profile card should span the full width of the .row grid -->
+              <div class="card" style="gap: 8px; grid-column: 1 / -1">
+                <div class="profile-card" role="region" aria-label="profile">
+                  <a
+                    class="avatar-lg"
+                    href="https://github.com/Zorkiiiz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-hidden="true"
+                  >
+                    <img
+                      src="https://github.com/Zorkiiiz.png"
+                      alt="Zorkiiiz avatar"
+                      style="
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 12px;
+                        display: block;
+                      "
+                    />
+                  </a>
+                  <div class="profile-main">
+                    <div class="profile-name-row">
+                      <div class="profile-name"><b>Thien Tran</b></div>
+                      <span
+                        class="status-badge status-small"
+                        aria-label="Available to work"
+                        >Available for Part-Time and Contracts Only</span
+                      >
+                    </div>
+                    <div class="profile-sub">
+                      Entry-Level IT Professional · Networking · Cybersecurity ·
+                      Full Stack Developer
+                    </div>
+                    <div class="chip-grid" aria-hidden="false">
+                      <span class="chip">English & Vietnamese</span>
+                      <span class="chip">UTC‑4</span>
+                      <span class="chip">Dayton, OH</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card animated" style="margin-top: 10px">
+              <h3>Education</h3>
+              <div class="job-title"><b>University of Dayton</b></div>
+              <ul
+                class="muted"
+                style="margin: 0 0 0 18px; display: grid; gap: 6px"
+              >
+                <li>Computer Science Bachelor of Science - 2025</li>
+              </ul>
+               <div class="job-title"><b>Certifications</b></div>
+             
+              <ul
+                class="muted"
+                style="margin: 0 0 0 18px; display: grid; gap: 6px"
+              >
+                <li>CompTIA A+ - Apr 2025</li>
+              </ul>
+            </div>
+
+            <div class="card" style="margin-top: 10px">
+              <h3>Projects</h3>
+              <div class="row">
+                <div class="card proj-card">
+                  <div class="thumb">
+                    <img
+                      src="/assets/pi-server.jpg"
+                      alt="Self-Hosted Pi Server"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="info">
+                    <b>Self-Hosted Pi Server</b>
+                    <div class="muted">Docker · Caddy · Cloudflare</div>
+                  </div>
+                </div>
+
+                <div class="card proj-card">
+                  <div class="thumb">
+                    <img
+                      src="/assets/monoText.png"
+                      alt="monoText"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="info">
+                    <b>MonoText</b>
+                    <div class="muted">Secure auth · CSRF/XSS/SQLi</div>
+                  </div>
+                </div>
+
+                <div class="card proj-card">
+                  <div class="thumb">
+                    <img
+                      src="/assets/movie-recs.png"
+                      alt="Movie Recommendation"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="info">
+                    <b>Movie Recommendation</b>
+                    <div class="muted">TMDB · Azure ML</div>
+                  </div>
+                </div>
+
+                <div class="card proj-card">
+                  <div class="thumb">
+                    <img
+                      src="/assets/demo.gif"
+                      alt="Cloud POS"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="info">
+                    <b>Cloud POS</b>
+                    <div class="muted">Neo4j · REST</div>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                class="btn"
+                style="margin-top: 8px; text-align: center"
+                href="/projects"
+              >
+                View All Projects
+              </a>
+            </div>
+
+            <div class="card animated" style="margin-top: 10px">
+              <div class="visitor-tracker" role="status" aria-live="polite">
+                <div class="muted">Site visitors</div>
+                <div id="visitor-count" class="count">—</div>
+
+                <div class="muted" style="margin-top: 6px">You visited</div>
+                <div id="visitor-you" class="count">—</div>
+
+                <div
+                  id="visitor-msg"
+                  class="muted"
+                  style="font-size: 0.95rem; margin-top: 6px"
+                >
+                  Loading…
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MIDDLE COLUMN -->
+          <div class="card" aria-label="Middle widgets">
+            <div class="row" style="min-height: unset">
+              <div class="card" style="grid-column: 1 / -1">
+                <h3>Stats</h3>
+                <div class="stats">
+                  <div class="stat">
+                    <b>6</b>
+                    <div class="muted">Projects</div>
+                  </div>
+                  <div class="stat">
+                    <b>4+</b>
+                    <div class="muted">Yrs Exp</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" aria-label="My Tech Stack">
+              <h3>My Tech Stack</h3>
+
+              <!-- Favorites (boxed) -->
+              <div class="row">
+                <div class="card">
+                  <b>Linux</b>
+                  <div class="muted">Admin • Shell</div>
+                </div>
+                <div class="card">
+                  <b>Docker</b>
+                  <div class="muted">Containers</div>
+                </div>
+                <div class="card">
+                  <b>Networking</b>
+                  <div class="muted">DNS • HTTPS/TLS</div>
+                </div>
+                <div class="card">
+                  <b>Caddy / Cloudflare</b>
+                  <div class="muted">Reverse Proxy • DNS</div>
+                </div>
+                <div class="card">
+                  <b>JavaScript</b>
+                  <div class="muted">Full Stack</div>
+                </div>
+                <div class="card">
+                  <b>Node.js / PHP</b>
+                  <div class="muted">Backend</div>
+                </div>
+                <div class="card">
+                  <b>Python</b>
+                  <div class="muted">Scripting • Automation</div>
+                </div>
+                <div class="card">
+                  <b>HTML / CSS</b>
+                  <div class="muted">Web Fundamentals</div>
+                </div>
+                <div class="card">
+                  <b>SQL / Neo4j</b>
+                  <div class="muted">Databases</div>
+                </div>
+                <div class="card">
+                  <b>MongoDB</b>
+                  <div class="muted">NoSQL</div>
+                </div>
+                <div class="card">
+                  <b>Git / GitHub</b>
+                  <div class="muted">Version Control</div>
+                </div>
+                <div class="card">
+                  <b>Bash</b>
+                  <div class="muted">Scripting • Automation</div>
+                </div>
+              </div>
+
+              <!-- Frequently used / also used (auto-scroll) -->
+              <div class="ticker" aria-label="Also used (auto scrolling)">
+                <div class="track">
+                  <!-- Systems & Networking -->
+                  <span class="chip">Windows</span>
+                  <span class="chip">Linux</span>
+                  <span class="chip">Caddy</span>
+                  <span class="chip">Cloudflare</span>
+                  <span class="chip">Bash</span>
+                  <!-- Web & Programming -->
+                  <span class="chip">JavaScript</span>
+                  <span class="chip">Node.js</span>
+                  <span class="chip">Python</span>
+                  <span class="chip">Java</span>
+                  <span class="chip">C#</span>
+                  <span class="chip">PHP</span>
+                  <span class="chip">HTML</span>
+                  <span class="chip">CSS</span>
+                  <span class="chip">Bootstrap</span>
+                  <span class="chip">jQuery</span>
+                  <span class="chip">REST APIs</span>
+                  <!-- Data & Tools -->
+                  <span class="chip">MongoDB</span>
+                  <span class="chip">Neo4j</span>
+                  <span class="chip">SQL</span>
+                  <span class="chip">GitHub</span>
+                  <span class="chip">Bitbucket</span>
+                  <span class="chip">Microsoft Office</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="card"
+              style="
+                margin-top: 10px;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                min-height: unset;
+                flex: 1;
+              "
+            >
+              <h3 style="margin-bottom: 6px; font-size: 1.3rem">
+                Let's Connect
+              </h3>
+              <div
+                class="list"
+                style="justify-content: center; margin-top: 10px"
+              >
+                <!-- GitHub -->
+                <a
+                  class="btn"
+                  href="https://github.com/Zorkiiiz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <img
+                    src="https://cdn.simpleicons.org/github/white"
+                    alt="GitHub"
+                    style="
+                      width: 20px;
+                      height: 20px;
+                      vertical-align: middle;
+                      margin-right: 6px;
+                    "
+                  />
+                  GitHub
+                </a>
+
+                <!-- LinkedIn -->
+                <a
+                  class="btn"
+                  href="https://linkedin.com/in/thientrancs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <img
+                    src="https://img.icons8.com/ios-filled/50/0A66C2/linkedin.png"
+                    alt="LinkedIn"
+                    style="
+                      width: 20px;
+                      height: 20px;
+                      vertical-align: middle;
+                      margin-right: 6px;
+                    "
+                  />
+                  LinkedIn
+                </a>
+
+                <!-- Email -->
+                <a
+                  class="btn"
+                  href="mailto:tomtr1456@gmail.com"
+                  aria-label="Email"
+                >
+                  <img
+                    src="https://cdn.simpleicons.org/gmail/EA4335"
+                    alt="Email"
+                    style="
+                      width: 20px;
+                      height: 20px;
+                      vertical-align: middle;
+                      margin-right: 6px;
+                    "
+                  />
+                  Email
+                </a>
+
+                <!-- Discord -->
+                <a
+                  class="btn"
+                  href="https://discord.com/users/asdfg6809"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Discord"
+                >
+                  <img
+                    src="https://cdn.simpleicons.org/discord/5865F2"
+                    alt="Discord"
+                    style="
+                      width: 20px;
+                      height: 20px;
+                      vertical-align: middle;
+                      margin-right: 6px;
+                    "
+                  />
+                  Discord
+                </a>
+
+                <!-- Steam -->
+                <a
+                  class="btn"
+                  href="https://steamcommunity.com/id/Zorki_Zo_Zo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Steam"
+                >
+                  <img
+                    src="https://cdn.simpleicons.org/steam/ffffff"
+                    alt="Steam"
+                    style="
+                      width: 20px;
+                      height: 20px;
+                      vertical-align: middle;
+                      margin-right: 6px;
+                    "
+                  />
+                  Steam
+                </a>
+
+                <!-- Resume -->
+                <a
+                  class="btn primary"
+                  href="./Files/Thien-Tran-Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  aria-label="Download résumé"
+                >
+                  📄 Résumé
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN (kept) -->
+          <div class="card" aria-label="Highlights">
+            <!-- Highlights box removed; keeping Now / Next -->
+            <div class="card animated" style="margin-top: 10px">
+              <h3>Now / Next</h3>
+              <ul
+                class="muted"
+                style="margin: 0 0 0 18px; display: grid; gap: 6px"
+              >
+                <li>Studying for Network+ / Security+</li>
+                <li>Improving Pi backup & monitoring</li>
+              </ul>
+            </div>
+
+            <div class="card animated" style="margin-top: 10px">
+              <h3>Work Experience</h3>
+
+              <!-- Current IT Admin -->
+              <div class="job">
+                <div class="job-title"><b>IT Administrator</b></div>
+                <div class="job-meta muted">Sunsong & Harco · 2025–Present</div>
+                <ul class="muted" style="margin: 6px 0 12px 18px; display: grid; gap: 6px">
+                  <li>Provide IT, network, and system support for 60+ employees.</li>
+                  <li>Manage Dynamics AX, workstation setups, and server operations.</li>
+                </ul>
+              </div>
+
+              <!-- Operations Manager -->
+              <div class="job">
+                <div class="job-title"><b>Operations Manager</b></div>
+                <div class="job-meta muted">University of Dayton · 2023–2025</div>
+                <ul class="muted" style="margin: 6px 0 12px 18px; display: grid; gap: 6px">
+                  <li>Led a 6-member AV/IT support team; improved efficiency by 30%.</li>
+                  <li>Delivered smooth event operations and technical troubleshooting.</li>
+                </ul>
+              </div>
+
+              <!-- Operations Assistant -->
+              <div class="job">
+                <div class="job-title"><b>Operations Assistant</b></div>
+                <div class="job-meta muted">University of Dayton · 2022–2023</div>
+                <ul class="muted" style="margin: 6px 0 0 18px; display: grid; gap: 6px">
+                  <li>Supported audio/visual systems and technical event setups.</li>
+                  <li>Resolved 90% of issues independently in high-paced environments.</li>
+                </ul>
+              </div>
+
+              <a class="btnWrk" style="margin-top: 8px; text-align: center" href="/experiences/">
+                View All Work Experiences
+              </a>
+            </div>
+
+            <div class="card spotify-card" style="margin-top: 1px">
+              <h3 style="margin-bottom: 8px">On repeat lately</h3>
+              <iframe
+                data-testid="embed-iframe"
+                style="border-radius: 12px"
+                src="https://open.spotify.com/embed/track/3D24ErT1MMmUfXWotSj2A2?utm_source=generator"
+                width="100%"
+                height="80"
+                frameborder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              ></iframe>
+            </div>
+
+            <div class="card" style="margin-top: 10px">
+              <h3>Get in touch with me</h3>
+              <form
+                id="contact-form"
+                class="contact-form"
+                aria-label="Contact Thien"
+                method="post"
+                action="#"
+              >
+                <input
+                  type="text"
+                  name="website"
+                  id="cf-website"
+                  style="display: none"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+
+                <input
+                  id="cf-name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  required
+                />
+                <input
+                  id="cf-email"
+                  name="email"
+                  type="email"
+                  placeholder="Your email"
+                  required
+                />
+                <textarea
+                  id="cf-msg"
+                  name="message"
+                  placeholder="Your message"
+                  required
+                ></textarea>
+                <div class="form-actions">
+                  <div
+                    id="contact-success"
+                    class="contact-success"
+                    role="status"
+                    aria-live="polite"
+                  ></div>
+                  <button class="btn primary" type="submit">Send</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer style="font-size: 0.8rem; padding: 2px 0; text-align: center">
+      Made with 💖 by Zorki (Thien Tran) — ©&nbsp;<span id="y"></span>&nbsp;All
+      rights reserved
+      <p>(Last update: Oct 21, 2025)</p>
+    </footer>
+
+    <script src="./main2.js" type="module"></script>
+  </body>
+</html>

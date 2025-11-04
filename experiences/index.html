@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Work Experiences · Thien Tran</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style01.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div>
+        <div class="title">Work Experiences</div>
+        <div class="muted">Swipe/scroll → to explore the timeline</div>
+      </div>
+      <a class="btn" href="/">← Back to Home</a>
+    </div>
+    
+    <!-- === DESKTOP FILTER PANEL === -->
+    <div class="filters-panel panel">
+      <div class="filters-head">
+        <div class="muted">Explore My Expertise</div>
+        <button class="btn ghost filters-desktop-only" id="reset-filters-desktop">Reset</button>
+        <button class="btn show-filter-sheet" id="open-filters">Filters</button>
+      </div>
+
+      <div class="group filters-desktop-only">
+        <h4 class="group-title">Technologies</h4>
+        <div id="exp-tech-chips" class=" chip-row"></div>
+      </div>
+
+      <div class="group filters-desktop-only" style="margin-top:10px">
+        <h4 class="group-title">Skills</h4>
+        <div id="exp-skill-chips" class=" chip-row"></div>
+      </div>
+    </div>
+
+    <!-- === MOBILE BOTTOM-SHEET === -->
+    <dialog id="filter-sheet" class="filter-sheet">
+      <article class="sheet-card">
+        <header class="sheet-head">
+          <h3>Filter: Technologies &amp; Skills</h3>
+          <button class="btn ghost" id="close-sheet" aria-label="Close">✕</button>
+        </header>
+
+        <div class="group">
+          <h4 class="group-title">Technologies</h4>
+          <div id="sheet-tech-chips" class="chip-row"></div>
+        </div>
+
+        <div class="group" style="margin-top:10px">
+          <h4 class="group-title">Skills</h4>
+          <div id="sheet-skill-chips" class="chip-row"></div>
+        </div>
+
+        <div class="sheet-actions">
+          <button class="btn ghost" id="clear-filters">Clear</button>
+          <span class="spacer"></span>
+          <button class="btn primary" id="apply-filters">Apply</button>
+        </div>
+      </article>
+    </dialog>
+
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="muted" id="meta"></div>
+      <div class="spacer"></div>
+      <div class="controls">
+        <button class="btn ghost" id="prev" aria-label="Scroll left">←</button>
+        <button class="btn primary" id="next" aria-label="Scroll right">→</button>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <section class="panel">
+      <div class="timeline-wrap">
+        <div class="timeline" id="timeline" aria-label="Career timeline"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal -->
+  <dialog id="job-modal">
+    <article class="modal-card">
+      <div class="modal-banner">
+        <img id="modal-img" src="/assets/pi-server.jpg" alt="Company logo" loading="lazy" decoding="async">
+      </div>
+      <header class="modal-head">
+        <h3 id="modal-title"></h3>
+        <button class="btn ghost" id="modal-close" aria-label="Close">✕</button>
+      </header>
+
+      <div class="muted" id="modal-sub"></div>
+      <p id="modal-dates" class="muted" style="margin-top:.25rem"></p>
+
+      <ul id="modal-points"></ul>
+
+      <!-- Technologies -->
+      <div class="group" id="tech-group" style="margin-top:12px">
+        <h4 style="margin:0 0 6px">Technologies</h4>
+        <div id="tech-chips" class="chip-row"></div>
+      </div>
+
+      <!-- Skills -->
+      <div class="group" id="skill-group" style="margin-top:12px">
+        <h4 style="margin:0 0 6px">Skills</h4>
+        <div id="skill-chips" class="chip-row"></div>
+      </div>
+
+    </article>
+  </dialog>
+
+
+  <script src="main01.js" type="module"></script>
+</body>
+</html>

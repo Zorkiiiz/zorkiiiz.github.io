@@ -1,0 +1,653 @@
+
+/*Build ID: 4 */
+
+/* Center visitor tracker in its card */
+.visitor-tracker {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "label1 label2"
+    "val1   val2"
+    "msg    msg";
+  gap: 4px 16px;
+  align-items: center;
+  text-align: center;
+}
+
+/* first label = "Site visitors" */
+.visitor-tracker .muted:nth-of-type(1) { 
+  grid-area: label1; 
+  margin: 0 !important; 
+}
+
+/* second label = "You visited" */
+.visitor-tracker .muted:nth-of-type(2) { 
+  grid-area: label2; 
+  margin: 0 !important; 
+}
+
+/* counts */
+#visitor-count { grid-area: val1; font-weight: 800; font-size: 1.25rem; line-height: 1; }
+#visitor-you   { grid-area: val2; font-weight: 800; font-size: 1.25rem; line-height: 1; }
+
+/* status line */
+#visitor-msg { grid-area: msg; margin-top: 6px; font-size: 0.95rem; }
+/* =========================
+   CSS CUSTOM PROPERTIES
+   ========================= */
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Sizing */
+  --avatar-xl: 120px;   /* desktop avatar */
+  --avatar-md: 120px;   /* tablet */
+  --avatar-sm: 96px;    /* small phones */
+  --brand-logo: 44px;   /* header logo */
+
+  /* Theme (dark) */
+  --bg: #0b0b12;
+  --panel: #11111b;
+  --edge: #1b1b2a;
+  --text: #e7e9ff;
+  --muted: #a5a8c7;
+  --brand: #8b5cf6;
+  --accent: #7dd3fc;
+  --chip: #17172a;
+  --star: #ffd369;
+  --ok: #3ddc97;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f7f8ff;
+    --panel: #ffffff;
+    --edge: #e7e8f5;
+    --text: #0d1020;
+    --muted: #4b557a;
+    --chip: #eef1ff;
+  }
+}
+
+/* ========================
+   BASE / RESET
+   ======================== */
+* { box-sizing: border-box; }
+
+html,
+body {
+  /* let the page grow and scroll */
+  min-height: 100dvh;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+  background:
+    radial-gradient(900px 600px at 100% -10%, rgba(139, 92, 246, 0.25), transparent),
+    var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ========================
+         LAYOUT 
+ ========================= */
+.stage{
+  position: static !important;
+  flex: 1 0 auto;
+  inset: auto !important;
+  display: block !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+/* container width & padding like the project page */
+:root{
+  --page-max: 1100px;
+  --page-pad: 16px;
+}
+.wrap{
+  width: 100%;
+  max-width: 2000px;                     
+  margin-left: auto;
+  margin-right: auto;                    /* center it */
+  padding-inline: clamp(12px, 3vw, 48px);/* responsive side gutters */
+  padding-block: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* grids that respect the viewport */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(10px, 1.2vw, 16px);
+}
+.row{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+
+/* extra guards so long content can shrink instead of overflow */
+html, body { overflow-x: visible; }
+.grid > *, .row > *, .card, .profile-main { min-width: 0; }
+
+/* =========================
+   HEADER / BRAND / TOOLBAR
+   ========================= */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand img {
+  width: var(--brand-logo);
+  height: var(--brand-logo);
+  border-radius: 10px;
+}
+.brand strong { font-size: 1.15rem; }
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+.btn {
+  padding: 0.42rem 0.8rem;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  font-weight: 600;
+  font-size: 0.88rem; 
+  cursor: pointer;
+}
+.btn.primary {
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+  border: none;
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px solid var(--edge);
+}
+
+.btn:hover {
+  opacity: 0.9; 
+}
+
+.btnWrk {
+  padding: 0.2rem 0.3rem;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  font-weight: 600;
+  font-size: 0.88rem; 
+  cursor: pointer;
+}
+.btnWrk.primary {
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+  border: none;
+}
+.btnWrk.ghost {
+  background: transparent;
+  border: 1px solid var(--edge);
+}
+
+.btnWrk:hover {
+  opacity: 0.9; 
+}
+
+/* =========================
+   CARDS / TYPOGRAPHY / BADGES
+   ========================= */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: 10px;
+  padding: 10px;
+  gap: 6px; 
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.36s cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 0.24s,
+    opacity 0.36s;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+.card.animated {
+  opacity: 0;
+  transform: translateY(12px) scale(0.998);
+}
+.card.in-view {
+  opacity: 1;
+  transform: none;
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(11, 11, 18, 0.55);
+}
+.card h3 {
+  margin: 0 0 3px;
+  font-size: 1.02rem; 
+}
+
+h3 { font-size: 1.12rem; }
+
+.muted {
+  color: var(--muted);
+  font-size: 0.96rem; 
+}
+
+.status-badge {
+  display: inline-block;
+  background: #754711;
+  color: #faead1;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+.status-badge.status-small {
+  font-size: 0.78rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* project media cards */
+.proj-card {
+  padding: 0;
+  overflow: hidden;              /* keep corners clean */
+  display: flex;
+  flex-direction: column;
+}
+
+.proj-card .thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;          /* keeps all thumbs same height */
+  background: #0e0f18;           /* fallback color */
+  border-bottom: 1px solid var(--edge);
+}
+
+.proj-card .thumb img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateZ(0);
+  transition: transform .25s ease-out;
+}
+
+.proj-card:hover .thumb img {
+  transform: scale(1.05);
+}
+
+.proj-card .info {
+  padding: 10px;
+  display: grid;
+  gap: 6px;
+}
+
+
+
+/* =========================
+   PROFILE
+   ========================= */
+.profile-card {
+  display: flex;
+  gap: 10px; 
+  align-items: flex-start;
+}
+.avatar-lg {
+  width: var(--avatar-xl);
+  height: var(--avatar-xl);
+  border-radius: 18px;
+  flex: 0 0 auto;
+  border: 1px solid var(--edge);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.04));
+}
+.profile-main {
+  flex: 1;
+  min-width: 0;
+}
+.profile-name {
+  margin: 0.23rem 0 0;
+}
+.profile-sub {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-top: 3px;
+}
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap; 
+}
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* =========================
+   CHIPS / LISTS / STATS
+   ========================= */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.55rem; 
+  background: var(--chip);
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.88rem; 
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px; 
+}
+.stat {
+  background: var(--chip);
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  padding: 8px; 
+  text-align: center;
+}
+.stat b { font-size: 2rem; }
+
+/* =========================
+   UTILITIES
+   ========================= */
+.scroll { overflow: visible; }
+
+/* =========================
+   DECOR / ANIMATIONS
+   ========================= */
+.float-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.float-bg .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.12;
+  mix-blend-mode: screen;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes floatY {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-36px); }
+  100% { transform: translateY(0); }
+}
+
+/* =========================
+   FORMS
+   ========================= */
+.contact-form {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--edge);
+  background: var(--panel);
+  color: var(--text);
+}
+
+.contact-form textarea {
+  resize: vertical;  
+}
+
+#cf-msg {
+  grid-column: 1 / -1; /* make message span both columns */
+  min-height: 150px;
+}
+
+.contact-form .form-actions {
+  grid-column: 1 / -1;   /* span across full form width */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* center content horizontally */
+  align-items: center;
+  gap: 10px;  /* small space between status text and button */
+}
+
+.contact-form > * {
+  min-width: 0;                   
+}
+
+/* =========================
+   TICKER
+   ========================= */
+.ticker {
+  margin-top: 14px;
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.03));
+  position: relative; /* keep the track absolutely positioned inside */
+  padding: 0; /* height will be set by JS after measuring the track */
+  max-width: 100%;
+}
+.ticker .track {
+  position: absolute; /* remove from flow so it cannot stretch layout */
+  left: 0;
+  top: 0;
+  display: flex;
+  gap: 10px;
+  padding: 10px; /* visual padding retained on the absolute element */
+  width: max-content;
+  will-change: transform;
+  max-width: 100%;
+  /* animation populated by JS (duration & keyframes calculated dynamically) */
+}
+.ticker:hover .track {
+  animation-play-state: paused !important;
+  cursor: pointer;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer{
+  position: static !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  pointer-events: auto;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin: 12px auto 6px;
+  width: 100%;
+  max-width: var(--page-max, 1100px);
+  flex-shrink: 0;                /* never collapse */
+}
+
+/* =========================
+   USER SIZING OVERRIDES
+   (Placed after base to preserve cascade)
+   ========================= */
+body {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.profile-name { font-size: 1.4rem; }
+.profile-sub  { font-size: 0.95rem; }
+
+.chip {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.5rem;
+}
+.btn {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+}
+.card {
+  padding: 8px;
+  border-radius: 10px;
+}
+.wrap {
+  padding: 8px 2vw;
+  gap: 8px;
+}
+.grid { gap: 8px; }
+
+/* ===== Pretty scrollbars (global) ===== */
+
+/* Firefox */
+* {
+  /* thin bar + custom colors (thumb, then track) */
+  scrollbar-width: thin;
+  scrollbar-color:
+    color-mix(in oklab, var(--brand) 70%, var(--accent) 30%)
+    var(--edge);
+}
+
+/* Chromium / WebKit */
+body::-webkit-scrollbar,
+.scrollbar::-webkit-scrollbar {
+  width: 10px;           /* vertical */
+  height: 10px;          /* horizontal */
+}
+
+body::-webkit-scrollbar-track,
+.scrollbar::-webkit-scrollbar-track {
+  background: var(--edge);
+  border-radius: 999px;
+}
+
+body::-webkit-scrollbar-thumb,
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 2px solid var(--edge);
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+}
+
+body::-webkit-scrollbar-thumb:hover,
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.1);
+}
+
+body::-webkit-scrollbar-corner,
+.scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+/* Desktop default (>=1120px): 3 columns — set globally elsewhere */
+
+/* Tablets & down (<=1119px): 2 columns, unlock .stage to flow */
+@media (max-width: 1119.98px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .wrap {
+    padding: 20px;
+    gap: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .profile-card { flex-direction: row; }
+
+  .brand img,
+  .avatar-lg {
+    width: var(--avatar-md);
+    height: var(--avatar-md);
+    border-radius: 14px;
+  }
+
+  body { font-size: 17px; line-height: 1.55; }
+  h3 { font-size: 1.12rem; }
+
+  /* critical: prevent clipping from fixed stage */
+  .stage {
+    position: static;
+    inset: auto;
+    display: block;
+    overflow: visible;
+    padding: 0;
+  }
+}
+
+/* Phones (<=560px): 1 column, tighter padding */
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .wrap {
+    padding: 10px;
+    gap: 14px;
+  }
+  body { font-size: 16px; line-height: 1.45; }
+}
+
+/* Small phones (<=520px): smaller avatar */
+@media (max-width: 520px) {
+  .avatar-lg {
+    width: var(--avatar-sm);
+    height: var(--avatar-sm);
+  }
+}
+
+/* Very wide displays (>=1600px): extra breathing room but cap width */
+@media (min-width: 1600px) {
+  .wrap {
+    padding: 24px 48px;
+    max-width: 2000px;
+  }
+}
+
+

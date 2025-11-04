@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Projects · Thien Tran</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style04.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <div>
+          <div class="title">My Projects</div>
+          <div class="muted">Filter, sort, and explore my projects.</div>
+        </div>
+        <a class="btn" href="/">← Back to Home</a>
+      </div>
+
+      <div class="filters">
+        <!-- Sidebar -->
+        <aside class="sidebar panel" aria-label="Filters">
+          <div class="group">
+            <h4>Project Type</h4>
+            <label class="check"
+              ><input id="f-featured" type="checkbox" /> Featured only</label
+            >
+            <label class="check"
+              ><input id="f-oss" type="checkbox" /> Open source</label
+            >
+            <label class="check"
+              ><input id="f-demo" type="checkbox" /> Has demo</label
+            >
+          </div>
+
+          <div class="group" id="tech-group">
+            <h4>Technologies</h4>
+            <div
+              id="tech-chips"
+              style="display: flex; flex-wrap: wrap; gap: 8px"
+            ></div>
+          </div>
+
+          <div class="group">
+            <h4>Sort By</h4>
+            <select id="sort" class="select" aria-label="Sort projects">
+              <option value="new">Newest</option>
+              <option value="old">Oldest</option>
+              <option value="az">A → Z</option>
+              <option value="za">Z → A</option>
+            </select>
+          </div>
+        </aside>
+
+        <!-- Results -->
+        <section class="panel" aria-live="polite">
+          <div class="results-head">
+            <div class="muted" id="results-text">Showing 0 of 0</div>
+            <div style="display: flex; gap: 8px; align-items: center">
+              <button id="reset" class="btn">Reset Filters</button>
+            </div>
+          </div>
+          <div id="cards" class="grid"></div>
+          <div id="empty" class="empty" hidden>
+            No projects match your filters.
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="./main05.js" type="module"></script>
+  </body>
+</html>

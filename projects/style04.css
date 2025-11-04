@@ -1,0 +1,355 @@
+/* BuildID: 04 */
+
+:root {
+--bg: #0b0b12;
+--panel: #11111b;
+--edge: #1b1b2a;
+--text: #e7e9ff;
+--muted: #a5a8c7;
+--brand: #8b5cf6;
+--accent: #7dd3fc;
+--chip: #17172a;
+--ok: #3ddc97;
+}
+@media (prefers-color-scheme: light) {
+:root {
+    --bg: #f7f8ff;
+    --panel: #fff;
+    --edge: #e7e8f5;
+    --text: #0d1020;
+    --muted: #4b557a;
+    --chip: #eef1ff;
+}
+}
+* {
+box-sizing: border-box;
+}
+body {
+margin: 0;
+font: 16px/1.45 ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Arial;
+color: var(--text);
+background: radial-gradient(
+    900px 600px at 100% -10%,
+    rgba(139, 92, 246, 0.25),
+    transparent
+    ),
+    var(--bg);
+padding: 16px;
+}
+.wrap {
+max-width: 1100px;
+margin: 0 auto;
+display: grid;
+gap: 14px;
+}
+.header {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+align-items: baseline;
+justify-content: space-between;
+}
+.title {
+font-size: 1.6rem;
+font-weight: 800;
+}
+.muted {
+color: var(--muted);
+}
+.panel {
+background: var(--panel);
+border: 1px solid var(--edge);
+border-radius: 12px;
+}
+.filters {
+display: grid;
+grid-template-columns: 260px 1fr;
+gap: 12px;
+}
+.sidebar {
+padding: 12px;
+display: grid;
+gap: 14px;
+}
+.group h4 {
+margin: 0 0 6px;
+font-size: 0.95rem;
+}
+.chip {
+display: inline-flex;
+align-items: center;
+gap: 0rem;
+padding: 0.28rem 0.55rem;
+background: var(--chip);
+border: 1px solid var(--edge);
+border-radius: 999px;
+color: var(--muted);
+font-size: 0.9rem;
+cursor: pointer;
+user-select: none;
+}
+.chip.active {
+outline: 2px solid var(--brand);
+color: var(--text);
+}
+.check {
+display: flex;
+gap: 8px;
+align-items: center;
+font-size: 0.95rem;
+}
+.select {
+width: 100%;
+padding: 0.5rem 0.6rem;
+border-radius: 10px;
+border: 1px solid var(--edge);
+background: var(--panel);
+color: var(--text);
+}
+.results-head {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+align-items: center;
+justify-content: space-between;
+padding: 10px;
+}
+.btn {
+padding: 0.5rem 0.75rem;
+border-radius: 10px;
+border: 1px solid var(--edge);
+background: var(--panel);
+color: var(--text);
+cursor: pointer;
+font-weight: 700;
+}
+.btn.primary {
+background: linear-gradient(135deg, var(--brand), var(--accent));
+border: none;
+}
+.grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 12px;
+padding: 12px;
+}
+.card {
+display: flex;
+flex-direction: column;
+gap: 10px;
+background: var(--panel);
+border: 1px solid var(--edge);
+border-radius: 12px;
+overflow: hidden;
+}
+.thumb {
+position: relative;
+aspect-ratio: 16/9;
+background: #0e0f18;
+}
+.thumb img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.thumb .badge {
+position: absolute;
+left: 10px;
+top: 10px;
+background: #0f5132;
+color: #d1fae5;
+font-weight: 800;
+font-size: 0.75rem;
+border-radius: 999px;
+padding: 0.25rem 0.6rem;
+}
+.body {
+padding: 10px;
+display: grid;
+gap: 8px;
+}
+.title-row {
+display: flex;
+gap: 8px;
+align-items: center;
+justify-content: space-between;
+}
+.card h3 {
+margin: 0;
+font-size: 1.05rem;
+}
+.desc {
+color: var(--muted);
+font-size: 0.95rem;
+}
+.tags {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+}
+.actions {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+margin-top: 2px;
+}
+.actions a {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+text-decoration: none;
+}
+.actions .btn {
+font-size: 0.9rem;
+}
+.empty {
+padding: 36px;
+text-align: center;
+color: var(--muted);
+}
+
+/* ===== Pretty scrollbars (global) ===== */
+
+/* Firefox */
+* {
+  /* thin bar + custom colors (thumb, then track) */
+  scrollbar-width: thin;
+  scrollbar-color:
+    color-mix(in oklab, var(--brand) 70%, var(--accent) 30%)
+    var(--edge);
+}
+
+/* Chromium / WebKit */
+body::-webkit-scrollbar,
+.scrollbar::-webkit-scrollbar {
+  width: 10px;           /* vertical */
+  height: 10px;          /* horizontal */
+}
+
+body::-webkit-scrollbar-track,
+.scrollbar::-webkit-scrollbar-track {
+  background: var(--edge);
+  border-radius: 999px;
+}
+
+body::-webkit-scrollbar-thumb,
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 2px solid var(--edge);
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+}
+
+body::-webkit-scrollbar-thumb:hover,
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.1);
+}
+
+body::-webkit-scrollbar-corner,
+.scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+
+/* responsive */
+@media (max-width: 980px) {
+.filters {
+    grid-template-columns: 1fr;
+}
+.grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+@media (max-width: 560px) {
+.grid {
+    grid-template-columns: 1fr;
+}
+body {
+    padding: 10px;
+}
+}
+/* Stack filters ABOVE the cards on all widths */
+.filters {
+display: grid;
+grid-template-columns: 1fr !important; /* was: 260px 1fr */
+gap: 16px;
+}
+
+/* Make the filter panel look like a horizontal toolbar */
+.sidebar {
+display: grid;
+grid-template-columns: minmax(180px,max-content) 1fr minmax(180px,max-content);
+gap: 16px;
+align-items: start;
+}
+
+/* tidy each group */
+.sidebar .group {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+/* tidy each group */
+.sidebar .group {
+margin: 0;
+}
+#tech-chips {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+}
+.select {
+width: 100%;
+}
+
+/* Responsive: collapse the toolbar on small screens */
+@media (max-width: 900px) {
+.sidebar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+}
+
+.card .thumb{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;          /* uniform height across all cards */
+  overflow: hidden;
+  background: #0e0f18;           /* fallback while loading */
+  border-bottom: 1px solid var(--edge);
+  border-top-left-radius: 12px;  /* match card corners */
+  border-top-right-radius: 12px;
+}
+.card .thumb img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* crop to fill the box */
+  display: block;
+  transform: translateZ(0);      /* avoids subtle blur on Chrome */
+}
+
+/* 1) No underline on links (incl. Back to Home) */
+a { color: inherit; text-decoration: none; }
+
+/* extra safety if any element uses .btn on an <a> */
+a.btn, a.btn:link, a.btn:visited { text-decoration: none; }
+
+/* 2) Dim all buttons on hover (and keep a nice focus ring) */
+.btn {
+  transition: opacity .15s ease-in-out, transform .15s ease-in-out;
+}
+.btn:hover { opacity: .9; }
+.btn:active { opacity: .82; }
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* (optional) chips feel like buttons—dim them too */
+.chip { transition: opacity .15s ease-in-out; }
+.chip:hover { opacity: .9; }
